@@ -107,9 +107,8 @@ class CD extends AbstractMedium
     @Override
     public String getFormatiertenString()
     {
-        return getMedienBezeichnung() + ":\n" + "    " + "Titel: " + _titel
-                + "\n" + "    " + "Kommentar: " + _kommentar + "\n" + "    "
-                + "Interpret: " + _interpret + "\n" + "    " + "Spiellänge: "
-                + _spiellaenge + "\n";
+        return super.getFormatiertenString() + "\n" + "    " + "Interpret: "
+                + _interpret + "\n" + "    " + "Spiellänge: " + _spiellaenge
+                + "\n";
     }
 }

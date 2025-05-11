@@ -108,10 +108,8 @@ class DVD extends AbstractMedium
     @Override
     public String getFormatiertenString()
     {
-        return getMedienBezeichnung() + ":\n" + "    " + "Titel: " + _titel
-                + "\n" + "    " + "Kommentar: " + _kommentar + "\n" + "    "
-                + "Regisseur: " + _regisseur + "\n" + "    " + "Laufzeit: "
-                + _laufzeit + "\n";
+        return super.getFormatiertenString() + "\n" + "    " + "Regisseur: "
+                + _regisseur + "\n" + "    " + "Laufzeit: " + _laufzeit + "\n";
     }
 
 }
