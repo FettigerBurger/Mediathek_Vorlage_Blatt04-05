@@ -87,4 +87,12 @@ public abstract class AbstractMedium implements Medium
         assert titel != null : "Vorbedingung verletzt: titel != null";
         _titel = titel;
     }
+
+    public Geldbetrag berechneMietgebuehr(int mietTage)
+    {
+        assert mietTage > 0 : "Die Mietdauer muss größer als 0 sein";
+        int gebuehr = mietTage * 300;
+
+        return new Geldbetrag(gebuehr);
+    }
 }

@@ -1,7 +1,10 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class DVDTest
 {
@@ -55,25 +58,39 @@ public class DVDTest
      */
     public void testEquals()
     {
-        assertNotEquals("Mehrere Exemplare der gleichen DVD sollten ungleich sein", _dvd1, _dvd2);
-        assertEquals("Dasselbe Exemplare der gleichen DVD sollte gleich sein", _dvd1, _dvd1);
+        assertNotEquals(
+                "Mehrere Exemplare der gleichen DVD sollten ungleich sein",
+                _dvd1, _dvd2);
+        assertEquals("Dasselbe Exemplare der gleichen DVD sollte gleich sein",
+                _dvd1, _dvd1);
     }
 
     @Test
     public final void testGetFormatiertenString()
     {
-    	 Medium medium = getMedium();
-         assertNotNull(medium.getFormatiertenString());
-        String[] containArray = {BEZEICHNUNG, TITEL, KOMMENTAR, REGISSEUR, String.valueOf(LAENGE)};
-        for(String testString : containArray)
+        Medium medium = getMedium();
+        assertNotNull(medium.getFormatiertenString());
+        String[] containArray = {BEZEICHNUNG, TITEL, KOMMENTAR, REGISSEUR,
+                String.valueOf(LAENGE)};
+        for (String testString : containArray)
         {
-            assertTrue(medium.getFormatiertenString().contains(testString));
+            assertTrue(medium.getFormatiertenString()
+                .contains(testString));
         }
     }
 
     private DVD getMedium()
     {
         return new DVD(TITEL, KOMMENTAR, REGISSEUR, LAENGE);
+    }
+
+    @Test
+    public void berechneMietgebuehr()
+    {
+        Medium medium = getMedium();
+        assertTrue(medium.berechneMietgebuehr(1) != null);
+        assertEquals(new Geldbetrag(300), medium.berechneMietgebuehr(1));
+        assertEquals(new Geldbetrag(3000), medium.berechneMietgebuehr(10));
     }
 
 }

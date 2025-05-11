@@ -68,4 +68,17 @@ interface Medium
      */
     public void setTitel(String titel);
 
+    /**
+    * Berechnet die Mietgebuehr in Eurocent für eine angegebene Mietdauer
+    * in Tagen
+    *
+    * @param mietTage
+    * Die Anzahl der Ausleihtage eines Mediums
+    * @return Die Mietgebühr in Eurocent als Geldbetrag
+    *
+    * @require mietTage > 0
+    *
+    * @ensure result != null
+    */
+    Geldbetrag berechneMietgebuehr(int mietTage);
 }

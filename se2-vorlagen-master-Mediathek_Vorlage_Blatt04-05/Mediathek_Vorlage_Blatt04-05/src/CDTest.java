@@ -1,7 +1,10 @@
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 //Die in den Testfällen verwendeten assert-Anweisungen werden über
 //einen sogenannten statischen Import bereitgestellt, zum Beispiel:
@@ -68,20 +71,34 @@ public class CDTest
      */
     public void testEquals()
     {
-        assertNotEquals("Mehrere Exemplare der gleichen CD sollten ungleich sein", _cd1, _cd2);
-        assertEquals("Dasselbe Exemplare der gleichen CD sollte gleich sein", _cd1, _cd1);
+        assertNotEquals(
+                "Mehrere Exemplare der gleichen CD sollten ungleich sein", _cd1,
+                _cd2);
+        assertEquals("Dasselbe Exemplare der gleichen CD sollte gleich sein",
+                _cd1, _cd1);
     }
 
     @Test
     public final void testGetFormatiertenString()
     {
-    	 Medium medium = getMedium();
-         assertNotNull(medium.getFormatiertenString());
-         String[] containArray = {BEZEICHNUNG, TITEL, KOMMENTAR, INTERPRET, String.valueOf(LAENGE)};
-         for(String testString : containArray)
-         {
-             assertTrue(medium.getFormatiertenString().contains(testString));
-         }
+        Medium medium = getMedium();
+        assertNotNull(medium.getFormatiertenString());
+        String[] containArray = {BEZEICHNUNG, TITEL, KOMMENTAR, INTERPRET,
+                String.valueOf(LAENGE)};
+        for (String testString : containArray)
+        {
+            assertTrue(medium.getFormatiertenString()
+                .contains(testString));
+        }
+    }
+
+    @Test
+    public void berechneMietgebuehr()
+    {
+        Medium medium = getMedium();
+        assertTrue(medium.berechneMietgebuehr(1) != null);
+        assertEquals(new Geldbetrag(300), medium.berechneMietgebuehr(1));
+        assertEquals(new Geldbetrag(3000), medium.berechneMietgebuehr(10));
     }
 
     private CD getMedium()
