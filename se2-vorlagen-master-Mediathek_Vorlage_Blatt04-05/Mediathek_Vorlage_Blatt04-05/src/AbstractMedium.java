@@ -88,6 +88,7 @@ public abstract class AbstractMedium implements Medium
         _titel = titel;
     }
 
+    @Override
     public Geldbetrag berechneMietgebuehr(int mietTage)
     {
         assert mietTage > 0 : "Die Mietdauer muss größer als 0 sein";
