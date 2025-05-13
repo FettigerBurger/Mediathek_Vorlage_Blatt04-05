@@ -4,12 +4,12 @@ public abstract class AbstractMedium implements Medium
     /**
      * Ein Kommentar zum Medium
      */
-    protected String _kommentar;
+    private String _kommentar;
 
     /**
      * Der Titel des Mediums
      */
-    protected String _titel;
+    private String _titel;
 
     /**
      * Initialisiert ein neues Medium.
@@ -23,7 +23,7 @@ public abstract class AbstractMedium implements Medium
      * @ensure getTitel() == titel
      * @ensure getKommentar() == kommentar
      */
-    public AbstractMedium(String kommentar, String titel)
+    protected AbstractMedium(String kommentar, String titel)
     {
         assert titel != null : "Vorbedingung verletzt: titel != null";
         assert kommentar != null : "Vorbedingung verletzt: kommentar != null";
