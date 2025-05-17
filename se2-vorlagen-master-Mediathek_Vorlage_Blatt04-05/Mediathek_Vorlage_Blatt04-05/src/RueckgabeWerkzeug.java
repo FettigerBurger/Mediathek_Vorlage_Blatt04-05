@@ -3,6 +3,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.event.ListSelectionEvent;
@@ -137,7 +138,17 @@ class RueckgabeWerkzeug
         {
             medien.add(verleihkarte.getMedium());
         }
-        _verleihService.nimmZurueck(medien, Datum.heute());
+        try
+        {
+            _verleihService.nimmZurueck(medien, Datum.heute());
+
+        }
+        catch (ProtokollierException e)
+        {
+            JOptionPane.showMessageDialog(null,
+                    "Fehler beim Protokollieren der Rückgabe " + e.getMessage(),
+                    " Fehlermeldung ", JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     /**

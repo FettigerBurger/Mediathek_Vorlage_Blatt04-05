@@ -10,6 +10,7 @@ public class VerleihProtokollierer
     public static final String RUECKGABE = "Rückgabe";
 
     /** 
+     * @throws ProtokollierException
      * @param ereignis
      * @param verleihkarte
      * 
@@ -17,23 +18,24 @@ public class VerleihProtokollierer
      * @require ereignis.equals(RUECKGABE) || ereignis.equals(AUSLEIHE)
      */
     public static void protokolliere(String ereignis, Verleihkarte verleihkarte)
+            throws ProtokollierException
     {
         assert ereignis.equals(AUSLEIHE) || ereignis.equals(
                 RUECKGABE) : "Vorbedingung verletzt: ereignis.equals(AUSLEIHE) || ereignis.equals(RUECKGABE)";
 
-        try
+        try (FileWriter writer = new FileWriter("./protokoll.txt", true))
         {
-            FileWriter writer = new FileWriter("./protokoll.txt", true);
 
             writer.write(ereignis + " von "
                     + verleihkarte.getFormatiertenString() + "\n");
-
-            writer.close();
         }
         catch (IOException e)
         {
-            System.err
-                .println("Protokoll.txt konnte nicht beschrieben werden: " + e);
+            throw new ProtokollierException(e.getMessage());
+        }
+        finally
+        {
+            System.out.print("Protokolliervorgang beendet.");
         }
 
         //        System.out

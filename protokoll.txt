@@ -11,3 +11,16 @@ am 17.5.2025 verliehen an
     Kannenweg 23
     21868 Stade
 
+Ausleihe von CD:
+    Titel: Disturbia
+    Kommentar: gut
+    Interpret: Rihanna
+    Spiellänge: 90
+am 17.5.2025 verliehen an
+    Kundennummer: 123460
+    Name: Katarina Klum
+    Telefon: unbekannt
+    Anschrift:
+    Ottensener Strasse 10
+    22761 Hamburg
+
